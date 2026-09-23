@@ -59,6 +59,7 @@ StudentExpenseTracker/
 ```
 
 ## How to Run
+(The files are available to download and run on https://rohitashwapandey-student-expense-tracker.edgeone.dev/)
 
 Open a terminal inside the `StudentExpenseTracker` folder.
 
