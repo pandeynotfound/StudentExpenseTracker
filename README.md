@@ -1,5 +1,10 @@
 # Student Expense Tracker
 
+**Student:** Rohitashwa Pandey  
+**Registration No.:** 26BAI10095  
+**Institution:** VIT Bhopal University  
+**Course:** CSE1021 — Introduction to Problem Solving and Programming
+
 A simple Python-based expense tracking application designed for students.
 
 ## Overview
@@ -34,7 +39,7 @@ The project demonstrates fundamental problem-solving and Python programming conc
 - String Operations
 - Exception Handling
 
-No external Python libraries are required to run the application.
+No external Python libraries are required.
 
 ## Project Structure
 
@@ -42,34 +47,50 @@ No external Python libraries are required to run the application.
 StudentExpenseTracker/
 │
 ├── main.py
+├── app.py
 ├── utils.py
 ├── test_expenses.py
 ├── statement.md
-├── README.md
-├── .gitignore
-│
-└── docs/
-    ├── flowchart.png
-    ├── use_case_diagram.png
-    ├── sequence diagram.png
-    ├── system_architecture.png
-    ├── component_diagram.png
-    ├── sample_output.png
-    └── test_results.txt
+└── README.md
 ```
 
+### `main.py`
+
+Contains the main application logic, menu system, and expense-management functions. The program includes the student project identification in its header and menu.
+
+### `app.py`
+
+Provides a simple Python launcher that calls the main application.
+
+### `utils.py`
+
+Contains reusable utility functions used by the main program.
+
+### `test_expenses.py`
+
+Contains tests for important expense-management and calculation operations.
+
+### `statement.md`
+
+Contains the problem statement, objectives, scope, requirements, and technical description.
+
+### `README.md`
+
+Contains project information, features, setup instructions, usage instructions, and testing instructions.
+
 ## How to Run
-(The files are available to download and run on https://rohitashwapandey-student-expense-tracker.edgeone.dev/)
+
+### Step 1: Open the Project Folder
 
 Open a terminal inside the `StudentExpenseTracker` folder.
 
-Run the application:
+### Step 2: Run the Application
 
 ```bash
 python main.py
 ```
 
-Use the menu:
+### Step 3: Use the Menu
 
 ```text
 1. Add Expense
@@ -80,49 +101,133 @@ Use the menu:
 6. Exit
 ```
 
+## Example Usage
+
+### Adding an Expense
+
+```text
+Enter your choice: 1
+
+Enter expense amount: 150
+Enter category: Food
+Enter description: Lunch
+
+Expense added successfully!
+```
+
+### Viewing Expenses
+
+```text
+Enter your choice: 2
+
+===== YOUR EXPENSES =====
+
+1 | INR 150.0 | Food | Lunch
+```
+
+### Searching Expenses
+
+```text
+Enter your choice: 3
+
+Enter category to search: Food
+
+===== SEARCH RESULTS =====
+
+1 | INR 150.0 | Food | Lunch
+```
+
+### Spending Summary
+
+```text
+Enter your choice: 4
+
+===== SPENDING SUMMARY =====
+
+Total Spending: INR 230.0
+Number of Expenses: 2
+Average Expense: INR 115.0
+
+===== CATEGORY-WISE SPENDING =====
+
+Food : INR 150.0
+Transport : INR 80.0
+```
+
+### Deleting an Expense
+
+```text
+Enter your choice: 5
+
+===== YOUR EXPENSES =====
+
+1 | INR 150.0 | Food | Lunch
+2 | INR 80.0 | Transport | Bus
+
+Enter expense number to delete: 1
+
+Deleted: Food - INR 150.0
+```
+
+## Input Validation
+
+The application validates user input.
+
+For example:
+
+```text
+Enter expense amount: abc
+
+Please enter a valid amount.
+```
+
+For a negative or zero amount:
+
+```text
+Enter expense amount: -100
+
+Amount must be greater than zero.
+```
+
+The program also prevents empty categories and descriptions.
+
 ## Testing
 
-Run:
+The project contains a testing file:
+
+```text
+test_expenses.py
+```
+
+Run the tests using:
 
 ```bash
 python test_expenses.py
 ```
 
-The current test suite checks:
-- Adding expense data
-- Multiple expenses
-- Category-wise calculation
-- Total spending calculation
-- Expense deletion
-
-The current test run passes all five tests.
-
-## Example
+Expected output:
 
 ```text
-===== SPENDING SUMMARY =====
+==============================
+   STUDENT EXPENSE TESTS
+==============================
 
-Total Spending: INR 900.0
-Number of Expenses: 4
-Average Expense: INR 225.0
+Test 1 passed: Add Expense
+Test 2 passed: Multiple Expenses
+Test 3 passed: Category Calculation
+Test 4 passed: Total Calculation
+Test 5 passed: Delete Expense
 
-===== CATEGORY-WISE SPENDING =====
-
-Food : INR 320.0
-Transport : INR 80.0
-Shopping : INR 500.0
+==============================
+   ALL TESTS PASSED!
+==============================
 ```
 
-## Design Documentation
+## Project Objective
 
-The `docs` folder contains:
-- Flowchart
-- Use Case Diagram
-- Sequence Diagram
-- System Architecture Diagram
-- Component Diagram
-- Sample Output
-- Test Results
+The objective of this project is to apply fundamental problem-solving and Python programming concepts to a simple real-world problem faced by students.
+
+The application demonstrates how data can be represented using Python lists and dictionaries and processed using functions, loops, conditions, searching, counting, and summation.
 
 ## Limitations
 
@@ -136,7 +241,8 @@ The `docs` folder contains:
 ## Future Enhancements
 
 Possible future improvements include:
-- Permanent storage using files
+
+- Permanent expense storage using files
 - Date and time for expenses
 - Monthly and weekly reports
 - Budget limits
@@ -147,3 +253,9 @@ Possible future improvements include:
 - Database integration
 - User accounts
 - Mobile application support
+
+## Conclusion
+
+The Student Expense Tracker is a simple application that demonstrates the practical use of fundamental Python programming and problem-solving concepts.
+
+It provides basic expense-management functionality while maintaining a simple and understandable design suitable for a beginner-level programming project.

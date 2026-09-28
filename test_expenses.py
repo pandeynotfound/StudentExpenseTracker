@@ -1,155 +1,100 @@
-from main import (
-    add_expense,
-    view_expenses,
-    search_expenses,
-    spending_summary,
-    delete_expense
-)
+"""
+Automated tests for Student Expense Tracker.
 
+Student: Rohitashwa Pandey
+Registration No.: 26BAI10095
+"""
 
-# -------------------------------
-# Test 1: Adding an Expense
-# -------------------------------
+from main import expenses
+
 
 def test_add_expense():
-    expenses = []
-
+    expenses.clear()
     expense = {
-        "amount": 100,
-        "category": "Food",
-        "description": "Lunch"
+        "amount": 250.0,
+        "description": "Lunch",
+        "category": "Food"
     }
-
     expenses.append(expense)
 
     assert len(expenses) == 1
-    assert expenses[0]["amount"] == 100
+    assert expenses[0]["amount"] == 250.0
+    assert expenses[0]["description"] == "Lunch"
     assert expenses[0]["category"] == "Food"
 
-    print("Test 1 passed: Add Expense")
-
-
-# -------------------------------
-# Test 2: Multiple Expenses
-# -------------------------------
 
 def test_multiple_expenses():
-    expenses = [
-        {
-            "amount": 100,
-            "category": "Food",
-            "description": "Lunch"
-        },
-        {
-            "amount": 200,
-            "category": "Transport",
-            "description": "Bus"
-        }
-    ]
+    expenses.clear()
 
-    assert len(expenses) == 2
-    assert expenses[1]["amount"] == 200
+    expenses.extend([
+        {"amount": 100.0, "description": "Bus", "category": "Conveyance"},
+        {"amount": 200.0, "description": "Lunch", "category": "Food"},
+        {"amount": 300.0, "description": "Books", "category": "College"}
+    ])
 
-    print("Test 2 passed: Multiple Expenses")
+    assert len(expenses) == 3
 
 
-# -------------------------------
-# Test 3: Category Calculation
-# -------------------------------
+def test_category_total():
+    expenses.clear()
 
-def test_category_calculation():
-    expenses = [
-        {
-            "amount": 100,
-            "category": "Food",
-            "description": "Lunch"
-        },
-        {
-            "amount": 200,
-            "category": "Food",
-            "description": "Dinner"
-        },
-        {
-            "amount": 150,
-            "category": "Transport",
-            "description": "Bus"
-        }
-    ]
+    expenses.extend([
+        {"amount": 100.0, "description": "Lunch", "category": "Food"},
+        {"amount": 150.0, "description": "Dinner", "category": "Food"},
+        {"amount": 200.0, "description": "Bus", "category": "Conveyance"}
+    ])
 
-    categories = {}
+    food_total = sum(
+        expense["amount"]
+        for expense in expenses
+        if expense["category"] == "Food"
+    )
+    conveyance_total = sum(
+        expense["amount"]
+        for expense in expenses
+        if expense["category"] == "Conveyance"
+    )
 
-    for expense in expenses:
-
-        category = expense["category"]
-
-        if category in categories:
-            categories[category] += expense["amount"]
-        else:
-            categories[category] = expense["amount"]
-
-    assert categories["Food"] == 300
-    assert categories["Transport"] == 150
-
-    print("Test 3 passed: Category Calculation")
+    assert food_total == 250.0
+    assert conveyance_total == 200.0
 
 
-# -------------------------------
-# Test 4: Total Calculation
-# -------------------------------
+def test_total_expenses():
+    expenses.clear()
 
-def test_total_calculation():
-    expenses = [
-        {"amount": 100, "category": "Food", "description": "Lunch"},
-        {"amount": 200, "category": "Transport", "description": "Bus"},
-        {"amount": 300, "category": "Shopping", "description": "Shoes"}
-    ]
+    expenses.extend([
+        {"amount": 100.0, "description": "Lunch", "category": "Food"},
+        {"amount": 200.0, "description": "Bus", "category": "Conveyance"},
+        {"amount": 300.0, "description": "Books", "category": "College"}
+    ])
 
-    total = 0
+    total = sum(expense["amount"] for expense in expenses)
+    assert total == 600.0
 
-    for expense in expenses:
-        total += expense["amount"]
-
-    assert total == 600
-
-    print("Test 4 passed: Total Calculation")
-
-
-# -------------------------------
-# Test 5: Delete Expense
-# -------------------------------
 
 def test_delete_expense():
+    expenses.clear()
 
-    expenses = [
-        {"amount": 100, "category": "Food", "description": "Lunch"},
-        {"amount": 200, "category": "Transport", "description": "Bus"}
-    ]
+    expenses.extend([
+        {"amount": 100.0, "description": "Lunch", "category": "Food"},
+        {"amount": 200.0, "description": "Bus", "category": "Conveyance"}
+    ])
 
     deleted = expenses.pop(0)
 
-    assert deleted["amount"] == 100
+    assert deleted["amount"] == 100.0
+    assert deleted["description"] == "Lunch"
     assert len(expenses) == 1
-    assert expenses[0]["category"] == "Transport"
-
-    print("Test 5 passed: Delete Expense")
 
 
-# -------------------------------
-# Run All Tests
-# -------------------------------
-
-if __name__ == "__main__":
-
-    print("\n==============================")
-    print("   STUDENT EXPENSE TESTS")
-    print("==============================\n")
-
+def run_tests():
     test_add_expense()
     test_multiple_expenses()
-    test_category_calculation()
-    test_total_calculation()
+    test_category_total()
+    test_total_expenses()
     test_delete_expense()
+    print("ALL TESTS PASSED!")
 
-    print("\n==============================")
-    print("   ALL TESTS PASSED!")
-    print("==============================")
+
+if __name__ == "__main__":
+    run_tests()
