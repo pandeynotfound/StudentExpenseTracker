@@ -224,7 +224,6 @@ No external Python libraries are required.
 StudentExpenseTracker/
 │
 ├── main.py
-├── app.py
 ├── utils.py
 ├── test_expenses.py
 ├── statement.md
@@ -233,9 +232,6 @@ StudentExpenseTracker/
 
 ### main.py
 Contains the main application logic, menu system, and expense-management functions.
-
-### app.py
-Provides a simple Python launcher for the main application.
 
 ### utils.py
 Contains small reusable utility functions used by the main program.
